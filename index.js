@@ -5,8 +5,21 @@ import db from "./db.js";
 
 // Resolvers define how to fetch the types defined in your schema.
 // This resolver retrieves books from the "games, authors and reviews" array from db.
+
+/*
+Resolvers built in arguments
+
+PARENT: is the result of the previous resolver in the hierarchy. For toplevel request the result will be NULL. 
+
+ARGS: (parameters): is the arguments the client sends in the request. For example ID
+
+CONTEXT: is used to SHARE information between resolvers like for example authentication info or global info.
+
+*/
 const resolvers = {
+  // The object name don't need to match. But its good to have a similar standard convention.
   Query: {
+    // All these function names need to match the type Query from the schema where we declared them.
     games() {
       return db.games;
     },
